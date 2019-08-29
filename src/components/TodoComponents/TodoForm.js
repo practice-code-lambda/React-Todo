@@ -2,7 +2,10 @@ import React from 'react';
 
 
 class TodoForm extends React.Component {
-    state = { todo : "" }
+    state = { todo : "",
+              id : Date.now(),
+              completed: false
+                         }
 
 
     textInputHandler = (event) =>{
@@ -11,8 +14,14 @@ class TodoForm extends React.Component {
 
     submitHandler = (event) =>{
         event.preventDefault()
-        this.props.addTodo(this.state.todo)
-        this.setState({todo:""})
+        this.props.addTodo({todo:this.state.todo,
+                            completed:false,
+                            id: Date.now()
+                 })
+        this.setState({todo:"",
+                       completed:false,
+                       id: Date.now()
+                                })
     }
  
     render() { 
