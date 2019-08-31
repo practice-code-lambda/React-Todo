@@ -2,10 +2,7 @@ import React from 'react';
 
 
 class TodoForm extends React.Component {
-    state = { todo : "",
-              id : Date.now(),
-              completed: false
-                         }
+    state = [];
 
 
     textInputHandler = (event) =>{
@@ -23,10 +20,13 @@ class TodoForm extends React.Component {
                        id: Date.now()
                                 })
     }
+
+
  
     render() { 
         //text change handler
         return ( 
+            <>
             <form onSubmit={(e)=>this.submitHandler(e)}>
                 {/* why does this continue to run if not in an anon func */}
                 <input 
@@ -35,10 +35,13 @@ class TodoForm extends React.Component {
                 name="todo"
                 value={this.state.todo}
                 placeholder="todo">
-              
+                
                 </input>
                 <button>submit</button>
             </form>
+            <button onClick={this.props.clearAllHandler}>clear all</button>
+            <button onClick={this.props.clearCompleted}>clear completed</button>
+            </>
          );
     }
 }

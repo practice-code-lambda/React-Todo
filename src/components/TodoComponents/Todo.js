@@ -5,7 +5,7 @@ const LineThrough = {
 }
 
 const Todo = (props) => {
-    console.log("props in Todo",props)
+
     return ( 
         <h1 style={props.completed ? {textDecoration: 'line-through'} : {textDecoration:'none'}}onClick={props.toggleCompleted}>{props.todo}</h1>
      );
